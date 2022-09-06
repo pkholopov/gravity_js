@@ -68,7 +68,7 @@ function detectCollision() {
       if (circleIntersect(obj1, obj2)) {
         let penetration = (obj2.r + obj1.r) - obj2.position.substract(obj1.position, true).updateValue().value
         let nCollisionVector = obj2.position.substract(obj1.position, true).normalize()
-        obj1.position.add(nCollisionVector.scale(penetration / 2, true))
+        obj1.position.substract(nCollisionVector.scale(penetration / 2, true))
         obj2.position.add(nCollisionVector.scale(penetration / 2, true))
         let relVelocity = obj1.velocity.substract(obj2.velocity, true)
         let speed = relVelocity.dotProduct(nCollisionVector)
